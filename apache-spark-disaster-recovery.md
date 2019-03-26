@@ -14,19 +14,16 @@ ms.date: <!--Update with actual publication date-->
 
 ## What is Disaster Recovery
 
-<!-- Present an overview of the idea here. Something like -->
-<!--Disaster recovery (DR) is focused on recovering from a catastrophic loss of application functionality. For example, if an Azure region hosting your application becomes unavailable, you need a plan for running your application or accessing your data in another region.
+Disaster recovery (DR) is focused on recovering from a catastrophic loss of application functionality. For example, if an Azure region hosting your application becomes unavailable, you need a plan for running your application or accessing your data in another region.
 
 Business and technology owners must determine how much functionality is required during a disaster. This level of functionality can take a few forms: completely unavailable, partially available via reduced functionality or delayed processing, or fully available.
 
-Resiliency and high availability strategies are intended for handling temporary failure conditions. Executing this plan involves people, processes, and supporting applications that allow the system to continue functioning. Your plan should include rehearsing failures and testing the recovery of databases to ensure the plan is sound.-->
+Resiliency and high availability strategies are intended for handling temporary failure conditions. Executing this plan involves people, processes, and supporting applications that allow the system to continue functioning. Your plan should include rehearsing failures and testing the recovery of databases to ensure the plan is sound.
 
 ## Common disaster scenarios
 
-<!-- Give details on common disaster recovery scenarios. Might also link to external information, like:
-
 For more information on disaster recovery architectures, see [Disaster recovery for Azure applications](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
--->
+
 
 ### Application failure
 
@@ -44,8 +41,7 @@ For more information on disaster recovery architectures, see [Disaster recovery 
 
 ### Active - Hot standby with dual ingest and processing
 
-<!--Provide some details on this configuration, its pros and cons. Something like:-->
-<!--
+
 ![8-replicate-option1](./media/apache-spark-disaster-recovery/8-option-1-active-dual-ingest.png)
 <br><br>
 - Applications/integration processes write to both clusters
@@ -53,12 +49,11 @@ For more information on disaster recovery architectures, see [Disaster recovery 
 - Standby cluster is offline for reads by applications and end users
 - Synchronization tasks need to be run to ensure clusters are in sync
 - RPO => Low/None | RTO => Low/None | Cost => High
--->
+
 
 ### Active - Cold standby with scheduled/batch replication to DR
 
-<!--Provide some details on this configuration, its pros and cons. Something like:-->
-<!--
+
 ![8-replicate-option2](./media/apache-spark-disaster-recovery/8-option-2-active-cold-standby.png)
 <br><br>
 - Applications write to active-primary ONLY
@@ -71,8 +66,6 @@ For more information on disaster recovery architectures, see [Disaster recovery 
 
 ### Active - DR cluster provisioned on-demand/as needed
 
-<!--Provide some details on this configuration, its pros and cons. Something like:-->
-<!--
 ![8-replicate-option3](./media/apache-spark-disaster-recovery/8-option-3-active-don-demand-dr.png)
 <br><br>
 - Applications write to active-primary cluster, no DR cluster provisioned
@@ -80,12 +73,9 @@ For more information on disaster recovery architectures, see [Disaster recovery 
 - Administrator provisions cluster on-demand in DR datacenter
 - Synchronization tasks need to be run to ensure clusters are in sync
  - RPO => Highest | RTO => Highest | Cost => Lowest
--->
 
 ### Active - Active with multi-master made possible by WANdisco
 
-<!--Provide some details on this configuration, its pros and cons. Something like:-->
-<!--
 ![8-replicate-option4](./media/apache-spark-disaster-recovery/8-option-4-active-active.png)
 <br><br>
 - Applications/integration processes write to/read from nearest cluster clusters
@@ -93,21 +83,16 @@ For more information on disaster recovery architectures, see [Disaster recovery 
 - Synchronization tasks need to be run to ensure clusters are in sync
 - WANdisco fusion supports automated metadata replication (sync) and data replication (async), scheduling, monitoring, alerting, bandwidth throttling and more
  - RPO => Lowest/None | RTO => Lowest/None | Cost => Highest | Effort => Lowest
--->
 
 ### Comparing the options
 
-<!--Provide some details on this configuration, its pros and cons. Something like:-->
-<!--
 ![8-compare-1](./media/apache-spark-disaster-recovery/8-comparing-1.png)
 <br><br>
 ![8-compare-2](./media/apache-spark-disaster-recovery/8-comparing-2.png)
--->
+
 
 ## Setting up replication for disaster recovery
 
-<!-- Detail the exact steps needed to make this work. A summary of the steps in the previous article:>
-<!--
 1. Select primary data center (eg East US, West US 2) DC1
 1. Create a resource group R1 in DC1
 1. Within R1, provision virtual network VNET1
@@ -130,7 +115,6 @@ For more information on disaster recovery architectures, see [Disaster recovery 
 1. Test access from SP2 to SA2
 1. Execute distcp to replicate data from SA3 to SA4
 1. Validate replication
--->
 
 ## Monitoring for disaster recovery
 
